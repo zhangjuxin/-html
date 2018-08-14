@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript">
+     window.onload = function(){
+       if (!window.localStorage) {
+          alert("浏览器不支持localStorage");
+          return
+       }else {
+         var storage = window.localStorage;
+         storage["a"] =1;
+         storage.b=2;
+         storage.setItem("c",3);
+         console.log(typeof storage["a"]);
+         console.log(typeof storage["b"]);
+         console.log(typeof storage["c"]);//打印出来的a,b,c是string类型。
+         console.log(storage);
+         storage.removeItem("a")
+         //localStorage遵循同源策略，不能跨域访问
+         for (var i = 0; i < storage.length; i++) {
+           var key = storage.key(i);
+           console.log(key);
+         }
+
+         //存储对象一般我们会将JSON存入localStorage中，
+         //但是在localStorage会自动将localStorage转换成为字符串形式
+         var data ={
+           name:'lizhijuan',
+           sex:'woman',
+           age:'20'
+         }
+
+         storage.setItem("data",JSON.stringify(data));
+         console.log(storage.getItem("data"));
+         console.log(JSON.parse(storage.getItem("data")));
+
+       }
+     }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

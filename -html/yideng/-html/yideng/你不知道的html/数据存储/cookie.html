@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>cookie</title>
+</head>
+<head>
+<script>
+
+  // 需要将文件放在服务器上才好使
+function setCookie(cname,cvalue,exdays){
+	var d = new Date();
+	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname+"="+cvalue+"; "+expires;  //设置使用域,
+	//本项目是www.lizhijuan.com域名下运行 只能这样设置 ;domain=.zhijuan.com
+	//如果设置别的域名 cookie设置无效，设置不了
+}
+function getCookie(cname){
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++) {
+		var c = ca[i].trim();
+		if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	}
+	return "";
+}
+function checkCookie(){
+	var user=getCookie("username");
+	if (user!=""){
+		alert("欢迎 " + user + " 再次访问");
+	}
+	else {
+		user = "lizhijuan";
+  		if (user!="" && user!=null){
+    		setCookie("username",user,30);
+    	    console.log(getCookie("username"))
+		}
+	}
+}
+</script>
+</head>
+
+<body onload="checkCookie()"></body>
+
+</html>

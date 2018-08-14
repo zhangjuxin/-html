@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style media="screen">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .umbrella{
+     position: relative;
+     left: 50%;
+     top:200px;
+     transform: translateX(-50%);
+     width: 200px;
+     height: 200px;
+  }
+  /* .top{
+
+  } */
+
+  .main{
+     position: relative;
+     width: 200px;
+     height:100px;
+     left: 50%;
+     transform: translateX(-50%);
+  }
+
+  .main::before{
+    content: "";
+    position: absolute;
+    top:-13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height:10px;
+    background:brown;
+    border: 2px solid #aaa;
+    border-radius: 50%;
+  }
+
+  .box01{
+     position: absolute;
+     width: 200px;
+     height:100px;
+     top: 0;
+     border-radius:100px 100px 0 0;
+     background: linear-gradient(90deg,
+       red 50%,
+       blue 50%);
+  }
+
+  .box02{
+     position:absolute;
+     width: 200px;
+     height:100px;
+     top: 0;
+     border-radius:100px 100px 0 0;
+     transform: rotateY(45deg);
+     background: linear-gradient(90deg,
+       green 50%,
+       orange 50%);
+  }
+
+  .box03{
+     position:absolute;
+     width: 200px;
+     height:100px;
+     top: 0;
+     border-radius:100px 100px 0 0;
+     transform: rotateY(70deg);
+     background: linear-gradient(90deg,
+       pink 50%,
+       yellow 50%);
+  }
+
+  .box04{
+     position: absolute;
+     width: 200px;
+     height:100px;
+     top: 0;
+     border-radius:100px 100px 0 0;
+     background: linear-gradient(transparent,
+       rgba(0, 0, 0, 0.3) 100%);
+  }
+
+  .line{
+    position: relative;;
+    left: 50%;
+    height: 100px;
+    transform: translateX(-50%);
+    width: 2px;
+    background: brown;
+  }
+
+  .footer{
+    position: relative;;
+    left: 50%;
+    height: 40px;
+    width: 20px;
+    transform: translateX(-50%);
+    background: brown;
+    border: 2px solid #aaa;
+    border-radius: 50%;
+  }
+  </style>
+
+</head>
+<body>
+  <div class="umbrella">
+      <div class="main">
+        <div class="box01"></div>
+        <div class="box02"></div>
+        <div class="box03"></div>
+        <div class="box04"></div>
+      </div>
+      <div class="line"></div>
+      <div class="footer"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>跨域资源共享</title>
+  <script type="text/javascript">
+    function loadXMLDOC()
+        {
+        //空对象然后添加
+        var fd = new FormData();
+        fd.append("a", "getUserInfo");
+        //通过表单对象创建 FormData
+        //XMLHttpRequest 原生方式发送请求
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST" ,"http://www.zhijuan.com/cross.php" , true);
+        //跨域访问没有设置cors的文件，将报错
+        //xhr.open("POST" ,"http://www.ybao.org/api/no_cors.php" , true);
+        xhr.send(fd);
+        xhr.onload = function(e) {
+          if (this.status == 200) {
+           eval("var data = "+this.responseText);
+             document.getElementById("userInfo").innerHTML="Id:" + data.uid + " Name:" + data.name;
+          };
+        };
+      }
+  </script>
+</head>
+<body>
+    <h2>跨域资源共享（Cross）</h2>
+    <div id="userInfo"></div>
+    <button onclick="loadXMLDOC()">请求数据</button>;
+
+    <div id="myDiv"></div>
+</body>
+</html>
